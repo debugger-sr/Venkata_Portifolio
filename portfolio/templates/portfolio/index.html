@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Chagamu - Data Engineering & Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-bg': '#F9F3EF',
+                    },
+                    fontFamily: {
+                        'sans': ['Lato', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        /* Custom styles can be added here if needed */
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(229, 231, 235, 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(229, 231, 235, 0.4) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* Timeline styling */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.5625rem;
+            top: 0.25rem;
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 9999px;
+            background-color: #3b82f6;
+            border: 2px solid #ffffff;
+        }
+        .skill-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        li:hover .skill-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-custom-bg text-gray-800 font-sans" x-data="{ openMenu: false }">
+
+    <!-- Header -->
+    <header class="bg-custom-bg/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="flex items-center space-x-3">
+                    <span class="bg-blue-600 text-white text-xl font-bold font-sans w-10 h-10 flex items-center justify-center rounded-full">VC</span>
+                    <span class="text-2xl font-bold text-gray-900 font-serif">Venkata Chagamu</span>
+                </a>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">My Story</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Resume</a>
+                    <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition-colors">Contact</a>
+                </nav>
+                <button @click="openMenu = !openMenu" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div x-show="openMenu" @click.away="openMenu = false" class="fixed inset-0 bg-black/50 z-40 md:hidden" x-cloak>
+        <div class="absolute top-0 right-0 h-full w-64 bg-white p-8">
+            <nav class="flex flex-col space-y-6">
+                <a href="#about" @click="openMenu = false" class="text-gray-600 hover:text-blue-600 transition-colors">My Story</a>
+                <a href="#skills" @click="openMenu = false" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#experience" @click="openMenu = false" class="text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#projects" @click="openMenu = false" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+                <a href="#" @click="openMenu = false" class="text-gray-600 hover:text-blue-600 transition-colors">Resume</a>
+                <a href="#contact" @click="openMenu = false" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="pt-24 bg-grid">
+            <!-- This section is now primarily a spacer for the fixed header -->
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1">
+                        <img src="https://i.postimg.cc/rsw2dTNF/Whats-App-Image-2025-08-27-at-9-41-52-AM.jpg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/3B82F6/FFFFFF?text=VC';"
+                             alt="Venkata Chagamu" 
+                             class="rounded-full mx-auto w-64 h-64 object-cover shadow-2xl">
+                    </div>
+                    <div class="md:col-span-2">
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">My Story</h2>
+                        <p class="text-gray-700 mb-4 text-lg leading-relaxed">My journey into data began with a fascination for uncovering patterns. I started in analytics, driven by the desire to answer complex business questions. However, I quickly realized that the quality of any insight is fundamentally limited by the quality of the underlying data infrastructure.</p>
+                        <p class="text-gray-700 text-lg leading-relaxed">This realization pushed me into data engineering, where I learned to build the systems that ensure data is reliable, timely, and accessible. Today, I operate at the intersection of these two worlds. I don't just analyze data; I build the foundations it rests upon. This dual perspective allows me to create truly end-to-end data solutions that are both technically sound and strategically valuable.</p>
+                    </div>
+                </div>
+                <div class="mt-16 flex justify-center space-x-4">
+                    <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition-transform hover:scale-105 shadow-lg">View My Work</a>
+                    <a href="#contact" class="bg-white text-gray-800 px-8 py-3 rounded-md text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg border border-gray-300">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Technologies Section -->
+        <section id="skills" class="py-20 bg-custom-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Skills & Technologies</h2>
+                    <p class="mt-4 text-lg text-gray-600">The tools and technologies I use to bring data to life.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Languages & Databases</h3>
+                        <ul class="space-y-4 text-gray-700 text-lg">
+                            {% for skill in skills %}
+                                {% if skill.category == 'Languages & Databases' %}
+                                    <li class="flex items-center">{{ skill.name }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Data Engineering</h3>
+                        <ul class="space-y-4 text-gray-700 text-lg">
+                            {% for skill in skills %}
+                                {% if skill.category == 'Data Engineering' %}
+                                    <li class="flex items-center">{{ skill.name }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Analytics & BI</h3>
+                        <ul class="space-y-4 text-gray-700 text-lg">
+                            {% for skill in skills %}
+                                {% if skill.category == 'Analytics & BI' %}
+                                    <li class="flex items-center">{{ skill.name }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Professional Experience</h2>
+                    <p class="mt-4 text-lg text-gray-600">My journey in the data industry.</p>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    {% for job in experiences %}
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900">{{ job.job_title }}</h3>
+                        <p class="font-semibold text-blue-600 mt-1">{{ job.company_name }} | {{ job.start_date|date:"Y" }} - {% if job.end_date %}{{ job.end_date|date:"Y" }}{% else %}Present{% endif %}</p>
+                        <p class="mt-3 text-gray-700 leading-relaxed">{{ job.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-custom-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Featured Projects</h2>
+                    <p class="mt-4 text-lg text-gray-600">A selection of projects that demonstrate my capabilities.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {% for project in projects %}
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-56 object-cover">
+                        {% endif %}
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">{{ project.title }}</h3>
+                            <p class="text-gray-700 mb-4">{{ project.description }}</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                {% for tech in project.get_technologies_list %}
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                            <a href="#" class="text-blue-600 font-semibold hover:underline">View Case Study &rarr;</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Certifications</h2>
+                    <p class="mt-4 text-lg text-gray-600">My commitment to continuous learning and professional development.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    {% for cert in certifications %}
+                    <div class="bg-custom-bg p-6 rounded-lg shadow-lg flex items-center transform hover:-translate-y-1 transition-transform duration-300">
+                        {% if cert.logo %}
+                        <img src="{{ cert.logo.url }}" class="w-16 h-16 mr-5" alt="{{ cert.name }} Logo">
+                        {% endif %}
+                        <div>
+                            <h3 class="font-bold text-lg">{{ cert.name }}</h3>
+                            <p class="text-gray-500">{{ cert.issuing_organization }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-custom-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">What Others Say</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                    {% for testimonial in testimonials %}
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <p class="text-gray-700 italic text-lg leading-relaxed">"{{ testimonial.quote }}"</p>
+                        <p class="mt-6 font-bold text-gray-900">- {{ testimonial.author_name }}</p>
+                        <p class="text-sm text-gray-500">{{ testimonial.author_title }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Let's Build Something Great Together</h2>
+                    <p class="mt-4 text-lg text-gray-600 leading-relaxed">I'm currently available for freelance projects and full-time opportunities. If you have a data challenge, I'd love to hear about it.</p>
+                    <a href="mailto:your-email@example.com" class="mt-10 inline-block bg-blue-600 text-white px-10 py-4 rounded-md text-lg font-semibold hover:bg-blue-700 transition-transform hover:scale-105 shadow-lg">your-email@example.com</a>
+                    <div class="mt-12 flex justify-center space-x-8">
+                        <a href="#" class="text-gray-500 hover:text-blue-600 transition-transform hover:scale-110">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-blue-600 transition-transform hover:scale-110">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Venkata Chagamu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
